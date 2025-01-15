@@ -1,0 +1,25 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Installing dependencies..."
+      - sudo yum install -y openssh-clients  # Install OpenSSH package, which includes scp
+
+  pre_build:
+    commands:
+      - echo "Preparing the build environment..."
+
+  build:
+    commands:
+      - echo "Building the application..."
+      - echo "No build steps for HTML files."
+
+  post_build:
+    commands:
+      - echo "Deploying to EC2..."
+      - scp -i C:\Users\Admin\Downloads\mywebapp-key.pem" ec2-user@13.48.43.161:/var/www/html/
+
+artifacts:
+  files:
+    - HiSaad.html
