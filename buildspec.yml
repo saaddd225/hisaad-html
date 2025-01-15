@@ -3,8 +3,8 @@ version: 0.2
 phases:
   install:
     commands:
-      # Install dependencies or tools if needed
-      echo Installing dependencies...
+      # Install openssh-clients which includes scp
+      echo Installing openssh-clients...
       sudo yum install -y openssh-clients
 
   build:
