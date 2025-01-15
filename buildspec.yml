@@ -4,7 +4,7 @@ phases:
   install:
     commands:
       - echo "Installing dependencies..."
-      - sudo yum install -y openssh-clients  # Install OpenSSH package, which includes scp
+      - sudo yum install -y openssh  # Install OpenSSH package, which includes scp
 
   pre_build:
     commands:
