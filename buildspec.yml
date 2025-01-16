@@ -3,16 +3,18 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo No dependencies to install.
+      - echo Installing dependencies...
+      - echo No dependencies to install for HTML files.
   build:
     commands:
-      - echo No build step required. Proceeding with deployment...
+      - echo No build step required for HTML files.
   post_build:
     commands:
       - echo Build complete. Starting deployment...
-      - aws s3 cp ./ s3://ci-cd-packages/ --recursive  # Upload everything from the current directory to the S3 bucket
+      - cd /home/ec2-user/hisaad-html
+      - aws s3 cp --recursive . s3://ci-cd-packages/
 
 artifacts:
   files:
-    - '**/*'  # This ensures all files in the directory are included as artifacts
+    - '**/*'
   discard-paths: yes
