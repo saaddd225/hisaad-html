@@ -2,27 +2,20 @@ version: 0.2
 
 phases:
   install:
+    runtime-versions:
+      nodejs: 16
     commands:
-      # Install openssh-clients which includes scp
-      echo Installing openssh-clients...
-      sudo yum install -y openssh-clients
-
+      - echo Installing dependencies...
+      - npm install
   build:
     commands:
-      # Download the RPM from S3
-      echo Downloading RPM from S3...
-      aws s3 cp s3://ci-cd-packages/openssh-clients-8.7p1-8.amzn2023.0.13.x86_64.rpm /tmp/
-
-      # Install the RPM package
-      echo Installing the RPM package...
-      sudo yum install -y /tmp/openssh-clients-8.7p1-8.amzn2023.0.13.x86_64.rpm
-
+      - echo Building the app...
+      - npm run build
   post_build:
     commands:
-      # Verify if the RPM was installed successfully
-      echo Verifying the installation...
-      rpm -qa | grep openssh
-
+      - echo Build complete. Starting deployment...
+      - aws s3 cp /path/to/build/output s3://your-bucket-name --recursive
 artifacts:
   files:
     - '**/*'
+  discard-paths: yes
