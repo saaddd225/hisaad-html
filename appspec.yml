@@ -1,0 +1,10 @@
+version: 0.0
+os: linux
+files:
+  - source: /        # Source folder in your CodeBuild artifact (usually root of your project)
+    destination: /home/ec2-user/app    # Destination directory on EC2 instance
+hooks:
+  AfterInstall:
+    - location: scripts/after_install.sh
+      timeout: 300
+      runas: ec2-user
