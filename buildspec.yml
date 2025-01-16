@@ -2,15 +2,11 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      nodejs: 16
     commands:
-      - echo Installing dependencies...
-      - npm install  # If you have any dependencies (e.g., package.json)
+      - echo No dependencies to install.
   build:
     commands:
-      - echo Building the app...
-      - # Any build steps, if needed, like compiling assets or minifying files
+      - echo No build step required. Proceeding with deployment...
   post_build:
     commands:
       - echo Build complete. Starting deployment...
