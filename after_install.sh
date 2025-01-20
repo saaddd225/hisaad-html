@@ -1,15 +1,12 @@
-version: 0.0
-os: linux
-files:
-  - source: /   # Specify the source directory or files to deploy
-    destination: /var/www/html/   # The destination path on the EC2 instance
-hooks:
-  BeforeInstall:
-    - location: scripts/before_install.sh
-      timeout: 180
-  AfterInstall:
-    - location: scripts/after_install.sh
-      timeout: 180
-  ApplicationStart:
-    - location: scripts/application_start.sh
-      timeout: 180
+#!/bin/bash
+echo "After install script running..."
+
+# Ensure proper permissions for web server directory
+sudo chown -R ec2-user:ec2-user /var/www/html
+sudo chmod -R 755 /var/www/html
+
+# Restart the web server (adjust for your server type)
+sudo systemctl restart httpd  # For Apache
+# sudo systemctl restart nginx  # Uncomment if using Nginx
+
+echo "After install script completed."
