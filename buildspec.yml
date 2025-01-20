@@ -4,7 +4,6 @@ phases:
   install:
     commands:
       - echo Installing dependencies...
-      - echo No dependencies to install for HTML files.
   build:
     commands:
       - echo No build step required for HTML files.
@@ -17,4 +16,4 @@ phases:
 artifacts:
   files:
     - '**/*'
-  discard-paths: yes
+  discard-paths: No
